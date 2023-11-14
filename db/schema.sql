@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS jobFinder_db;
+CREATE DATABASE jobFinder_db;
