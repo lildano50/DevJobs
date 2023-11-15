@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJobs</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>DevJobs</h1>
+    <!-- Navigation Bar -->
+    <nav id="navBar">
+        <a href="/">Home</a>
+        {{#if logged_in}}
+        <a href="/profile">Profile</a>
+        <button id="logout">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        <a href="/signup">Sign up</a>
+        {{/if}}
+    </nav>
+   
+    <!-- Get User's Preferances -->
+    <div id="userPrefernces">
+        <form>
+            <!-- Location -->
+            <label for="location">Location:</label><br>
+            <input type="text" id="location" name="location"><br>
+        
+            <!-- Part-time or Full-time -->
+            <label for="work_type">Work Type:</label><br>
+            <select id="work_type" name="work_type">
+                <option value="full-time">Full-time</option>
+                <option value="part-time">Part-time</option>
+            </select><br>
+            <!-- Salary Range -->
+            <label for="salary_range">Salary Range:</label><br>
+            <select id="salary_range" name="salary_range">
+                <option value="50000-70000">$50,000 - $70,000</option>
+                <option value="70000-90000">$70,000 - $90,000</option>
+                <option value="90000-110000">$90,000 - $110,000</option>
+                <option value="110000+">$110,000+</option>
+            </select><br>
+            <!-- Work Remotely or In-Person -->
+            <label for="work_remotely">Work Remotely:</label><br>
+            <input type="checkbox" id="work_remotely" name="work_remotely"><br>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <!-- Results -->
+    <div id="results" style="display: none;"></div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  {{!-- <script src="/js/logout.js"></script> --}}
+  {{/if}}
+</body>
+</html>
