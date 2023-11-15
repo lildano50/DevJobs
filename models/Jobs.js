@@ -24,9 +24,8 @@ Jobs.init(
     },
     job_state: {
       // .stateCategory
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
     company_name: {
       // .company
@@ -67,7 +66,7 @@ Jobs.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'blog',
+    modelName: 'jobs',
   }
 );
 
