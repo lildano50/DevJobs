@@ -1,21 +1,14 @@
 const sequelize = require('../config/connection');
-const { User, Jobs } = require('../models');
+const { Jobs } = require('../models');
 
-const userData = require('./userData.json');
-const jobData = require('./jobData.json');
+const jobData = require('./jobSeeds.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
-
   for (const job of jobData) {
     await Jobs.create({
-      ...job,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      ...job
     });
   }
 

@@ -13,45 +13,50 @@ Jobs.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    job_name: {
+    name: {
       // .name
       type: DataTypes.STRING,
       allowNull: false,
     },
-    job_city: {
+    cityCategory: {
       // .cityCategory
       type: DataTypes.STRING,
     },
-    job_state: {
+    stateCategory: {
       // .stateCategory
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    company_name: {
+    company: {
       // .company
       type: DataTypes.STRING,
       allowNull: false,
     },
-    job_type: {
+    jobType: {
       // Full time vs Part Time etc...
       // .jobType
       type: DataTypes.STRING,
       allowNull: false,
     },
-    annual_salary_from: {
+    annualSalaryFrom: {
       // .annualSalaryFrom
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    annual_salary_to: {
+    annualSalaryTo: {
       // .annualSalaryTo
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    job_url: {
+    jobUrl: {
       // .jobUrl
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    // .isFullRemote
+    isFullRemote: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -66,7 +71,7 @@ Jobs.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'jobs',
+    modelName: 'job',
   }
 );
 
