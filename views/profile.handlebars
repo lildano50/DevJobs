@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>{{name}}'s Job List</h2>
+  </div>
+</div>
+
+  {{#if jobs.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Added Jobs:</h3>
+
+    {{#each jobs as |jobs|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/job/{{jobs.id}}">{{jobs.job_name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{jobs.id}}">Remove Job</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+
+{{!-- <script src="../assets/js/profile.js"></script> --}}

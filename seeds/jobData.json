@@ -1,0 +1,32 @@
+[
+  {
+    "job_name": "Dev Job 1",
+    "job_city": "Austin",
+    "job_state": "Texas",
+    "company_name": "Test Company 1",
+    "job_type": "Full Time",
+    "annual_salary_from": 10000,
+    "annual_salary_to": 50000,
+    "job_url": "www.testjob1.com"
+  },
+  {
+    "job_name": "Dev Job 2",
+    "job_city": "Houston",
+    "job_state": "Texas",
+    "company_name": "Test Company 2",
+    "job_type": "Part Time",
+    "annual_salary_from": 20000,
+    "annual_salary_to": 60000,
+    "job_url": "www.testjob2.com"
+  },
+  {
+    "job_name": "Dev Job 3",
+    "job_city": "Dallas",
+    "job_state": "Texas",
+    "company_name": "Test Company 3",
+    "job_type": "Contract",
+    "annual_salary_from": 30000,
+    "annual_salary_to": 70000,
+    "job_url": "www.testjob3.com"
+  }
+]
