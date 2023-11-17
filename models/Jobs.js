@@ -58,6 +58,11 @@ Jobs.init(
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
+      // .redirectJobUrl
+    redirectJobUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
