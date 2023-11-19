@@ -8,13 +8,18 @@
   <div class="col-md-6 project-list">
     <h3>Current Added Jobs:</h3>
 
-    {{#each jobs as |jobs|}}
+    {{#each jobs}}
     <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/job/{{jobs.id}}">{{jobs.job_name}}</a></h4>
+      <h2 id="{{id}}">{{name}}</h2>
+        <ul>
+          <li>{{company}}</li>
+          <li>{{cityCategory}}, {{stateCategory}}</li>
+          <li>{{jobType}}</li>
+          <li><a href="{{redirectJobUrl}}">{{jobUrl}}</a></li>
+        </ul>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{jobs.id}}">Remove Job</button>
+        <button class="btn btn-sm btn-danger" data-id="{{id}}">Remove Job</button>
       </div>
     </div>
     {{/each}}
