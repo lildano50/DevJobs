@@ -50,7 +50,7 @@ button:hover {
 #login-container,
 #signup-container,
 #userPrefernces {
-    display: none;
+    display: block;
     max-width: 400px;
     margin: 20px auto;
     padding: 20px;
