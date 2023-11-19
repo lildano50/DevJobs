@@ -1,29 +1,91 @@
  <!-- Get User's Preferances -->
-    <div id="userPrefernces">
-        <form>
-            <!-- Location -->
-            <label for="location">Location:</label><br>
-            <input type="text" id="location" name="location"><br>
+<div id="userPrefernces">
+    <form id="job_form">
+        <!-- Location -->
+        <label for="city_category">Enter Your City:</label><br>
+        <input type="text" id="city_category" name="city_category"><br><br>
+        <label for="state_category">Enter Your State:</label><br>
+        <input type="text" id="state_category" name="state_category"><br><br>
         
-            <!-- Part-time or Full-time -->
-            <label for="work_type">Work Type:</label><br>
-            <select id="work_type" name="work_type">
-                <option value="full-time">Full-time</option>
-                <option value="part-time">Part-time</option>
-            </select><br>
-            <!-- Salary Range -->
-            <label for="salary_range">Salary Range:</label><br>
-            <select id="salary_range" name="salary_range">
-                <option value="50000-70000">$50,000 - $70,000</option>
-                <option value="70000-90000">$70,000 - $90,000</option>
-                <option value="90000-110000">$90,000 - $110,000</option>
-                <option value="110000+">$110,000+</option>
-            </select><br>
-            <!-- Work Remotely or In-Person -->
-            <label for="work_remotely">Work Remotely:</label><br>
-            <input type="checkbox" id="work_remotely" name="work_remotely"><br>
+        <!-- Part-time or Full-time -->
+        <label for="job_type">Select Your Type</label><br>
+        <select id="job_type" name="job_type">
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+        </select><br>
+        
+        <!-- Salary Range -->
+        <label for="salary_range">Salary Range:</label><br>
+        <select id="salary_range_from" name="salary_range_from">
+        <option value="0">No Minimum</option>
+        <option value="20000">$20,000</option>
+        <option value="40000">$40,000</option>
+        <option value="60000">$60,000</option>
+        <option value="80000">$80,000</option>
+        <option value="100000">$100,000</option>
+        <option value="120000">$120,000</option>
+        <option value="140000">$140,000</option>
+        <option value="160000">$160,000</option>
+        </select>
 
-            <!-- Submit Button -->
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+        <select id="salary_range_to" name="salary_range_to">
+        <option value="9999999">No Maximum</option>
+        <option value="70000">$70,000</option>
+        <option value="90000">$90,000</option>
+        <option value="110000">$110,000</option>
+        <option value="130000">$130,000</option>
+        <option value="150000">$150,000</option>
+        <option value="170000">$170,000</option>
+        <option value="190000">$190,000</option>
+        <option value="210000">$210,000</option>
+        </select><br>
+        
+        <!-- Work Remotely or In-Person -->
+        <label for="work_remotely">Work Remotely:</label>
+        <input type="checkbox" id="work_remotely" name="work_remotely"><br>
+        
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById("job_form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Get form values
+        const city = document.getElementById("city_category").value;
+        const state = document.getElementById("state_category").value;
+        const jobType = document.getElementById("job_type").value;
+        const salaryRangeFrom = document.getElementById("salary_range_from").value;
+        const salaryRangeTo = document.getElementById("salary_range_to").value;
+        const workRemotely = document.getElementById("work_remotely").checked;
+        
+        // Create JSON object
+        const jsonObject = {
+            "city_category": city,
+            "state_category": state,
+            "job_type": jobType,
+            "annual_salary_from": getSalaryFrom(salaryRangeFrom),
+            "annual_salary_to": getSalaryTo(salaryRangeTo),
+            "isFullRemote": workRemotely
+        };
+        
+        // Display JSON object
+        console.log(JSON.stringify(jsonObject));
+        });
+        
+        // Helper functions to get salary range values
+        function getSalaryFrom(range) {
+        var salaryFrom = range;
+        return parseInt(salaryFrom);
+        }
+        
+        function getSalaryTo(range) {
+        var salaryTo = range;
+        if (salaryTo === "9999999") {
+            return -1; // Use -1 to represent "unlimited"
+        }
+        return parseInt(salaryTo);
+        }
+    </script>
+</div>
