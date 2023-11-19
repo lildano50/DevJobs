@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevJobs</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
     <h1>DevJobs</h1>
@@ -20,7 +21,7 @@
         {{/if}}
     </nav>
    
-    <main class="container container-fluid mt-5">
+    <main class="container container-fluid mt-5 image-background">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
@@ -28,7 +29,7 @@
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  {{!-- <script src="/js/logout.js"></script> --}}
+  <script src="/js/logout.js"></script>
   {{/if}}
 </body>
 </html>
