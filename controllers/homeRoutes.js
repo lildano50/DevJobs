@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
   res.render('homepage');
 })
 
+// Login
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to root route
     if (req.session.logged_in) {
@@ -15,6 +16,10 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// Signup
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
 
 router.get('/jobs', async (req, res) => {
     try {
