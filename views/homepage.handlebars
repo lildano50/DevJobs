@@ -1,6 +1,6 @@
  <!-- Get User's Preferances -->
 <div id="userPrefernces">
-    <form id="job_form">
+    <form id="job_form" >
         <!-- Location -->
         <label for="city_category">Enter Your City:</label><br>
         <input type="text" id="city_category" name="city_category"><br>
@@ -41,51 +41,11 @@
         </select><br>
         
         <!-- Work Remotely or In-Person -->
-        <label for="work_remotely" class="remote_label">Check to Work Remotely:</label>
-        <input type="checkbox" id="work_remotely" name="work_remotely"><br>
+        {{!-- <label for="work_remotely" class="remote_label">Check to Work Remotely:</label>
+        <input type="checkbox" id="work_remotely" name="work_remotely"><br> --}}
         
         <!-- Submit Button -->
         <input type="submit" value="Submit">
     </form>
-
-    <script>
-        document.getElementById("job_form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent form submission
-        
-        // Get form values
-        const city = document.getElementById("city_category").value;
-        const state = document.getElementById("state_category").value;
-        const jobType = document.getElementById("job_type").value;
-        const salaryRangeFrom = document.getElementById("salary_range_from").value;
-        const salaryRangeTo = document.getElementById("salary_range_to").value;
-        const workRemotely = document.getElementById("work_remotely").checked;
-        
-        // Create JSON object
-        const jsonObject = {
-            "city_category": city,
-            "state_category": state,
-            "job_type": jobType,
-            "annual_salary_from": getSalaryFrom(salaryRangeFrom),
-            "annual_salary_to": getSalaryTo(salaryRangeTo),
-            "isFullRemote": workRemotely
-        };
-        
-        // Display JSON object
-        console.log(JSON.stringify(jsonObject));
-        });
-        
-        // Helper functions to get salary range values
-        function getSalaryFrom(range) {
-        var salaryFrom = range;
-        return parseInt(salaryFrom);
-        }
-        
-        function getSalaryTo(range) {
-        var salaryTo = range;
-        if (salaryTo === "9999999") {
-            return -1; // Use -1 to represent "unlimited"
-        }
-        return parseInt(salaryTo);
-        }
-    </script>
 </div>
+<script src="./js/jobs.js"></script>

@@ -3,7 +3,15 @@ const { Jobs, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-  res.render('homepage');
+
+  if(req.session.logged_in){
+    res.render('homepage', {
+    logged_in: req.session.logged_in
+    });
+  } else {
+    res.render('login');
+  }
+
 })
 
 // Login
