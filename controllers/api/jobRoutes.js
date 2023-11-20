@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 const router = require('express').Router();
 const { Jobs } = require('../../models');
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     console.log('req.body: ', req.body);
     try {
         // Find all jobs that meet user input criteria
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
                 annual_salary_to: {
                     [Op.lte]: req.body.annual_salary_to
                 },
-                isFullRemote: req.body.isFullRemote
+                // isFullRemote: req.body.isFullRemote
             }
         });
 
@@ -28,14 +28,20 @@ router.get('/', async (req, res) => {
             return;
         }
 
-        res.status(200).json(jobData);
+        const jobs = jobData.map((job) => job.get({ plain: true }));
 
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
+        // res.status(200).json(jobData);
+        res.render('jobs', { 
+            jobs, 
+            logged_in: req.session.logged_in 
+          });
 
-            res.status(200).json(jobData);
-        })
+        // req.session.save(() => {
+        //     req.session.user_id = userData.id;
+        //     req.session.logged_in = true;
+
+        //     res.status(200).json(jobData);
+        // })
     } catch (err) {
         res.status(400).json(err);
     }
