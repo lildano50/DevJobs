@@ -1,13 +1,14 @@
 // Import Op to query database by using Operators in Sequelize
-const { Op } = require("sequelize");
+const { Sequelize, Op } = require("sequelize");
 const router = require('express').Router();
 const { Jobs } = require('../../models');
 
 router.get('/', async (req, res) => {
-    console.log(req.query.city_category);
     try {
         // Find all jobs that meet user input criteria
         const jobData = await Jobs.findAll({
+            order: Sequelize.literal('rand()'),
+            limit: 6,
             where: {
                 cityCategory: req.query.city_category,
                 stateCategory: req.query.state_category,
@@ -28,22 +29,13 @@ router.get('/', async (req, res) => {
             return;
         }
 
-        console.log(jobData);
-
         const jobs = jobData.map((job) => job.get({ plain: true }));
 
-        // res.status(200).json(jobData);
         res.render('jobs', { 
             jobs, 
             logged_in: req.session.logged_in 
           });
 
-        // req.session.save(() => {
-        //     req.session.user_id = userData.id;
-        //     req.session.logged_in = true;
-
-        //     res.status(200).json(jobData);
-        // })
     } catch (err) {
         console.log(err);
         res.status(400).json(err);
