@@ -2,15 +2,17 @@
 <div class="text-center results">
   <h2 id="{{id}}">{{name}}</h2>
     <ul>
-      <li>{{company}}</li>
+      <li id="company">{{company}}</li>
       <li>{{cityCategory}}, {{stateCategory}}</li>
       <li>{{jobType}}</li>
       <li>Earn from ${{annualSalaryFrom}} to ${{annualSalaryTo}}</li>
       <li><a class="url" href="{{redirectJobUrl}}">{{jobUrl}}</a></li>
     </ul>
   <p>
-    <button class="btn btn-primary" id="add-job">Add this job!</button>
+    <button class="btn btn-primary" id="add-job" data-id="{{id}}">Add this job!</button>
   </p>
 </div>
 
 {{/each}}
+
+<script src="/js/addJob.js"></script>
