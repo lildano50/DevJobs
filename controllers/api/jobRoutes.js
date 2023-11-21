@@ -1,24 +1,26 @@
 // Import Op to query database by using Operators in Sequelize
-const { Op } = require("sequelize");
+const { Sequelize, Op } = require("sequelize");
 const router = require('express').Router();
 const { Jobs } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
-    console.log('req.body: ', req.body);
     try {
         // Find all jobs that meet user input criteria
         const jobData = await Jobs.findAll({
+            order: Sequelize.literal('rand()'),
+            limit: 6,
             where: {
-                city_category: req.body.city_category,
-                state_category: req.body.state_category,
-                job_type: req.body.job_type,
-                annual_salary_from: {
-                    [Op.gte]: req.body.annual_salary_from
+                cityCategory: req.query.city_category,
+                stateCategory: req.query.state_category,
+                jobType: req.query.job_type,
+                annualSalaryFrom: {
+                    [Op.gte]: req.query.annual_salary_from
                 },
-                annual_salary_to: {
-                    [Op.lte]: req.body.annual_salary_to
+                annualSalaryTo: {
+                    [Op.lte]: req.query.annual_salary_to
                 },
-                isFullRemote: req.body.isFullRemote
+                // isFullRemote: req.body.isFullRemote
             }
         });
 
@@ -28,17 +30,27 @@ router.get('/', async (req, res) => {
             return;
         }
 
-        res.status(200).json(jobData);
+        const jobs = jobData.map((job) => job.get({ plain: true }));
 
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
+        res.render('jobs', { 
+            jobs, 
+            logged_in: req.session.logged_in 
+          });
 
-            res.status(200).json(jobData);
-        })
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 })
+
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+      const addJob = await Jobs.findByPk(req.params.id);
+  
+      res.status(200).json(addJob);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
 
 module.exports = router;
