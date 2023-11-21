@@ -29,6 +29,10 @@ body {
     margin-left: 10px;
 }
 
+.url{
+    color: black;
+}
+
 a {
     text-decoration: none;
     justify-content: flex-end;
@@ -123,8 +127,7 @@ input[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-#results {
-    display: none;
+.results {
     max-width: 600px;
     margin: auto;
     padding: 20px;

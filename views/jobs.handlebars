@@ -1,12 +1,12 @@
 {{#each jobs}}
-<div class="text-center">
+<div class="text-center results">
   <h2 id="{{id}}">{{name}}</h2>
     <ul>
       <li>{{company}}</li>
       <li>{{cityCategory}}, {{stateCategory}}</li>
       <li>{{jobType}}</li>
       <li>Earn from ${{annualSalaryFrom}} to ${{annualSalaryTo}}</li>
-      <li><a href="{{redirectJobUrl}}">{{jobUrl}}</a></li>
+      <li><a class="url" href="{{redirectJobUrl}}">{{jobUrl}}</a></li>
     </ul>
   <p>
     <button class="btn btn-primary" id="add-job">Add this job!</button>
