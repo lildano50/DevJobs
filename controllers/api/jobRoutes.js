@@ -2,6 +2,7 @@
 const { Sequelize, Op } = require("sequelize");
 const router = require('express').Router();
 const { Jobs } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
@@ -41,5 +42,15 @@ router.get('/', async (req, res) => {
         res.status(400).json(err);
     }
 })
+
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+      const addJob = await Jobs.findByPk(req.params.id);
+  
+      res.status(200).json(addJob);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
 
 module.exports = router;
