@@ -4,11 +4,11 @@
   </div>
 </div>
 
-  {{#if jobs.length}}
-  <div class="col-md-6 project-list">
+  {{#if favorites.length}}
+  <div class="col-md-6 job-list">
     <h3>Current Added Jobs:</h3>
 
-    {{#each jobs}}
+    {{#each favorites}}
     <div class="row mb-2">
       <h2 id="{{id}}">{{name}}</h2>
         <ul>
@@ -19,8 +19,13 @@
         </ul>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{id}}">Remove Job</button>
+        <button class="btn btn-sm btn-danger delete-job" data-id="{{id}}">Remove Job</button>
       </div>
+
+      {{!-- <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+      </div> --}}
+
     </div>
     {{/each}}
   </div>
