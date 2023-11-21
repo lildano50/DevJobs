@@ -3,20 +3,20 @@ const { Op } = require("sequelize");
 const router = require('express').Router();
 const { Jobs } = require('../../models');
 
-router.post('/', async (req, res) => {
-    console.log('req.body: ', req.body);
+router.get('/', async (req, res) => {
+    console.log(req.query.city_category);
     try {
         // Find all jobs that meet user input criteria
         const jobData = await Jobs.findAll({
             where: {
-                city_category: req.body.city_category,
-                state_category: req.body.state_category,
-                job_type: req.body.job_type,
-                annual_salary_from: {
-                    [Op.gte]: req.body.annual_salary_from
+                cityCategory: req.query.city_category,
+                stateCategory: req.query.state_category,
+                jobType: req.query.job_type,
+                annualSalaryFrom: {
+                    [Op.gte]: req.query.annual_salary_from
                 },
-                annual_salary_to: {
-                    [Op.lte]: req.body.annual_salary_to
+                annualSalaryTo: {
+                    [Op.lte]: req.query.annual_salary_to
                 },
                 // isFullRemote: req.body.isFullRemote
             }
@@ -27,6 +27,8 @@ router.post('/', async (req, res) => {
             res.json({ message: 'No jobs match the search criteria' });
             return;
         }
+
+        console.log(jobData);
 
         const jobs = jobData.map((job) => job.get({ plain: true }));
 
@@ -43,6 +45,7 @@ router.post('/', async (req, res) => {
         //     res.status(200).json(jobData);
         // })
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 })
