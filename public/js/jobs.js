@@ -11,17 +11,8 @@ const jobFormHandler = async (event) => {
     
       if (city_category && state_category && job_type && annual_salary_from && annual_salary_to) {
   
-        const response = await fetch('/api/jobs', {
-          method: 'POST',
-          body: JSON.stringify({ city_category, state_category, job_type, annual_salary_from, annual_salary_to }),
-          headers: { 'Content-Type': 'application/json' },
-        });
-    
-        if (response.ok) {
-          document.location.replace('/api/jobs');
-        } else {
-          alert(response.statusText);
-        }
+          document.location.replace(`/api/jobs?city_category=${city_category}&state_category=${state_category}&job_type=${job_type}&annual_salary_from=${annual_salary_from}&annual_salary_to=${annual_salary_to}`);
+ 
       }
   };
     
