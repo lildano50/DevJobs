@@ -30,7 +30,7 @@ If you need help on how to clone a GitHub repository into your local repository,
 ## Appearance
 
 Deployed Screenshot:
-    ![Dev Jobs]()
+    ![Dev Jobs](/DevJobs/public/assets/images/screenshot.png)
 
 To view the deployed webpage click the following link: [Deployed Webpage](https://shielded-hollows-32035-7796c32f6e6c.herokuapp.com/)
 
@@ -61,4 +61,4 @@ Tim Lafuente
 
 ## License
 
-Link to [The MIT License (MIT)]()
+Link to [The MIT License (MIT)](/LICENSE.txt)
