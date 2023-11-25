@@ -13,3 +13,8 @@ const delButtonHandler = async (event) => {
     }
   }
 };
+
+document
+  .querySelectorAll('.delete-job').forEach(function(job) {
+    job.addEventListener('click', delButtonHandler);
+  })

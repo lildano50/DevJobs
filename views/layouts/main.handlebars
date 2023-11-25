@@ -7,11 +7,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
-<body>
+<body class="image-background">
     <h1>DevJobs</h1>
     <!-- Navigation Bar -->
     <nav id="navBar">
-        <img src="/assets/images/logo.png" alt="DevJobs logo">
+        <a href="/" class="logo">
+          <img src="/assets/images/logo.png" alt="DevJobs logo">
+        </a>
         <a href="/">Home</a>
         {{#if logged_in}}
         <a href="/profile">Profile</a>
@@ -22,7 +24,7 @@
         {{/if}}
     </nav>
    
-    <main class="container container-fluid mt-5 image-background">
+    <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>

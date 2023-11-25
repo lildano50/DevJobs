@@ -25,8 +25,11 @@ body {
 #navBar img {
     max-width: 150px;
     min-height: auto;
-    margin-right: 1275px;
     margin-left: 10px;
+}
+
+.logo {
+    margin-right: auto;
 }
 
 .url{
@@ -77,7 +80,7 @@ button:hover {
 #signup-container {
     display: block;
     max-width: 400px;
-    margin: auto;
+    margin: 100px auto;
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #fff;
@@ -88,7 +91,7 @@ button:hover {
 #userPrefernces {
     display: block;
     max-width: 400px;
-    margin: auto;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #fff;
